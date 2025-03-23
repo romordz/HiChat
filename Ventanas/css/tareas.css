@@ -1,0 +1,156 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ea66d6, #ff5506);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Contenedor del logo y la imagen "chati.png" */
+#logo {
+    display: flex;
+    align-items: center;  /* Alinear imágenes verticalmente */
+    gap: 10px;            /* Espacio entre las imágenes */
+}
+
+/* Estilos para ambas imágenes */
+#logo img {
+    width: 80px;  
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Ajustes específicos para la imagen "chati.png" */
+#chati {
+    width: 80px;  
+    border-radius: 10px; 
+}
+
+/* Mensaje de bienvenida */
+#bienvenida {
+    text-align: center;
+    margin-top: 110px; /* Add margin to prevent header from overshadowing content */
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Contenedor de tareas */
+.tareas-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+.tareas-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Cuadrícula de tareas */
+.tareas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px; /* Espacio entre tareas */
+}
+
+/* Estilos para cada tarea */
+.tarea {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.tarea:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+}
+
+.tarea-titulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tarea-descripcion {
+    font-size: 16px;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Hace que la descripción ocupe el espacio disponible */
+}
+
+.tarea-fecha {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffeb3b; /* Color amarillo para la fecha */
+    margin-bottom: 15px;
+}
+
+.tarea-grupo {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00bcd4; /* Color azul para el nombre del grupo */
+    margin-bottom: 15px;
+}
+
+/* Estilos para el botón de completada */
+.btn-completada {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-completada:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Estilos para el botón de volver */
+.btn-volver {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.btn-volver:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Estilos para el mensaje de "No hay tareas" */
+#noTareasMensaje {
+    display: none;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-top: 20px;
+}

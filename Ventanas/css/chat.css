@@ -1,0 +1,422 @@
+/* ---- ESTILOS GENERALES ---- */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ea66d6, #ff5506);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* ---- CONTENEDOR PRINCIPAL DEL CHAT ---- */
+#chatContainer {
+    width: 450px; /* Aumentar el ancho del contenedor */
+    height: 650px; /* Aumentar la altura del contenedor */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ---- ENCABEZADO DEL CHAT ---- */
+#chatHeader {
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.marco-perfil-chat {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    z-index: 1;
+}
+
+#chatUserImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#chatHeader h2 {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+}
+
+/* Botón de cerrar chat */
+#cerrarChat {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Botón de ver miembros */
+#verMiembros {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+#verMiembros:hover {
+    background: rgba(0, 195, 255, 1);
+}
+
+/* Botón de gestionar tareas */
+#gestionarTareas {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+#gestionarTareas:hover {
+    background: rgba(0, 195, 255, 1);
+}
+
+/* ---- ÁREA DE MENSAJES ---- */
+#chatMessages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ---- ESTILOS DE MENSAJES ---- */
+.mensaje {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    font-size: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; /* Espacio entre mensajes */
+}
+
+/* Mensajes recibidos (izquierda) */
+.recibido {
+    background: rgba(255, 255, 255, 0.3); /* Fondo blanco semi-transparente */
+    align-self: flex-start; /* Alinear a la izquierda */
+    color: white; /* Texto blanco */
+}
+
+/* Mensajes enviados (derecha) */
+.enviado {
+    background: rgba(0, 195, 255, 0.6); /* Fondo azul semi-transparente */
+    align-self: flex-end; /* Alinear a la derecha */
+    color: white; /* Texto blanco */
+}
+
+/* Nombre del usuario (solo en mensajes recibidos) */
+.nombre-usuario {
+    font-size: 12px;
+    color: #000000; /* Color del nombre del usuario */
+    margin-bottom: 5px;
+}
+
+/* Contenido del mensaje */
+.contenido-mensaje {
+    font-size: 14px;
+}
+
+/* Fecha de envío */
+.fecha-envio {
+    font-size: 10px;
+    color: #000000; /* Color de la fecha */
+    margin-top: 5px;
+    align-self: flex-end; /* Alinear a la derecha */
+}
+
+/* ---- ÁREA DE ENTRADA DE MENSAJES ---- */
+#chatInput {
+    display: flex;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#mensaje {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#enviarMensaje {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#enviarMensaje:hover {
+    background: rgba(0, 195, 255, 1);
+}
+
+/* ---- MÚSICA Y BOTÓN DE SILENCIAR ---- */
+#musica {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#btnMusica {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#btnMusica:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* ---- POPUP PARA VER MIEMBROS ---- */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.popup-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-content h2 {
+    text-align: center;
+    color: #333;
+}
+
+#listaMiembros {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.miembro {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.marco-perfil-miembros {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.miembro-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.miembro-nombre {
+    font-size: 16px;
+    color: #333;
+}
+
+/* ---- POPUP PARA GESTIONAR TAREAS ---- */
+#tareasPopup .popup-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* Aumentar el ancho máximo del popup */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#tareasPopup .popup-content h2 {
+    text-align: center;
+    color: #333;
+}
+
+#tareasPopup .popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#tareasPopup .popup-content form label {
+    font-size: 14px;
+    color: #333;
+}
+
+#tareasPopup .popup-content form input,
+#tareasPopup .popup-content form textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#tareasPopup .popup-content form button {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#tareasPopup .popup-content form button:hover {
+    background: rgba(0, 195, 255, 1);
+}
+
+/* ---- ESTILOS DE TAREAS ---- */
+.tarea {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.tarea-titulo {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.tarea-descripcion {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.tarea-fecha {
+    font-size: 12px;
+    color: #999;
+    margin: 5px 0;
+}
+
+.btn-completada {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-completada:hover {
+    background: rgba(0, 195, 255, 1);
+}
+
+/* Estilos para el botón de enviar ubicación */
+#btnUbicacion {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: 10px; /* Espacio entre botones */
+}
+
+#btnUbicacion:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.mensaje iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}

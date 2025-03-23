@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ea66d6, #ff5506);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+#bienvenida {
+    text-align: left;
+    margin-top: 100px;
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#searchContainer {
+    margin-top: 20px;
+    width: 10%;
+    max-width: 400px;
+    position: relative;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#searchInput:focus {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#searchResults {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.search-result {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.search-result:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+
+#musica {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#btnMusica {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#btnMusica:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+#galeria {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+#galeria img {
+    width: 500px;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+#galeria img:hover {
+    transform: scale(1.1);
+}
+
+#galeria button {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#galeria button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}

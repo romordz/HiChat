@@ -1,0 +1,158 @@
+header#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 15px 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: none;
+    z-index: 1000;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#chati {
+    width: 80px;
+    border-radius: 10px;
+}
+
+header#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    gap: 15px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#menu ul li {
+    position: relative;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* dropdown */
+.perfil .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    margin: 0;
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.perfil .dropdown ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil .dropdown li {
+    margin: 5px 0;
+}
+
+.perfil .dropdown li a {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    display: block;
+    transition: all 0.3s ease;
+}
+/* dropdown */
+
+.perfil .dropdown li a:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+#menu .perfil, #menu .cerrar-sesion {
+    margin-left: auto;
+}
+
+#perfilIcono {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.marco-perfil-header {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+#btnPerfil {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#btnPerfil:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}

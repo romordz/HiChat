@@ -1,0 +1,103 @@
+/* ---- ESTILOS GENERALES ---- */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ea66d6, #ff5506);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* ---- CONTENEDOR PRINCIPAL DE LA VIDEOLLAMADA ---- */
+#videoContainer {
+    width: 400px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ---- ENCABEZADO ---- */
+#videoHeader {
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+#videoUserImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#videoHeader h2 {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+}
+
+/* Botón de colgar */
+#colgarLlamada, #colgarLlamadaBottom {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#colgarLlamadaBottom {
+    width: 100%;
+    padding: 12px;
+    border-radius: 0;
+}
+
+/* ---- ÁREA DE VIDEO ---- */
+#videoScreen {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Estilos para los videos */
+video {
+    width: 90%;
+    border-radius: 10px;
+    background: black;
+}
+
+/* ---- CONTROLES DE VIDEO ---- */
+#videoControls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#videoControls button {
+    background: rgba(0, 195, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#videoControls button:hover {
+    background: rgba(0, 195, 255, 1);
+}
