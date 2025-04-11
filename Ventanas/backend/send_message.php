@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si los datos son JSON
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
     if (strpos($contentType, 'application/json') !== false) {
-        // Obtener el cuerpo de la solicitud en formato JSON
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
 
@@ -19,11 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } else {
-        // Si no es JSON, asumir que es x-www-form-urlencoded
         $data = $_POST;
     }
 
-    // Verificar si los datos necesarios están presentes
     if (!isset($data['chat_id']) || !isset($data['contenido'])) {
         echo json_encode(["status" => "error", "message" => "Datos incompletos."]);
         exit();
@@ -34,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenido = $data['contenido'];
     $fecha_envio = date('Y-m-d H:i:s');
 
-    // Verificar si el chat existe
     $stmt = $conn->prepare("SELECT id FROM Chats WHERE id = ?");
     $stmt->bind_param("i", $chat_id);
     $stmt->execute();
@@ -48,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 
-    error_log("Mensaje recibido: " . print_r($data, true)); // Log de los datos recibidos
+    error_log("Mensaje recibido: " . print_r($data, true));
 
     $stmt = $conn->prepare("INSERT INTO Mensajes (chat_id, usuario_id, contenido, fecha_envio) VALUES (?, ?, ?, ?)");
     if (!$stmt) {

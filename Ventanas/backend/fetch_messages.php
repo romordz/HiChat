@@ -12,13 +12,7 @@ if (!$chat_id) {
     exit();
 }
 
-$stmt = $conn->prepare("
-    SELECT Mensajes.*, Usuarios.nombre_usuario 
-    FROM Mensajes 
-    JOIN Usuarios ON Mensajes.usuario_id = Usuarios.id 
-    WHERE chat_id = ? 
-    ORDER BY fecha_envio ASC
-");
+$stmt = $conn->prepare("SELECT Mensajes.*, Usuarios.nombre_usuario FROM Mensajes JOIN Usuarios ON Mensajes.usuario_id = Usuarios.id WHERE chat_id = ? ORDER BY fecha_envio ASC");
 $stmt->bind_param("i", $chat_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -27,9 +21,10 @@ $messages = [];
 while ($row = $result->fetch_assoc()) {
     $messages[] = $row;
 }
-error_log("Mensajes recuperados: " . print_r($messages, true)); // Log de los mensajes recuperados
-echo json_encode($messages);
 
 $stmt->close();
 $conn->close();
+
+header('Content-Type: application/json');
+echo json_encode($messages);
 ?>

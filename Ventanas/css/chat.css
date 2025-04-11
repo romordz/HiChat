@@ -413,6 +413,25 @@ body {
     transform: scale(1.1);
 }
 
+/* Estilos para el botón de videollamada */
+#btnVideollamada {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: 10px; /* Espacio entre botones */
+}
+
+#btnVideollamada:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
 .mensaje iframe {
     width: 100%;
     height: 200px;
