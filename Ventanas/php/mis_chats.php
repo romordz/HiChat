@@ -7,15 +7,14 @@ include '../backend/process_mis_chats.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Chats</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../css/grupos.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
 
     <!-- Mensaje de bienvenida -->
-    <div id="bienvenida">
-        <h2>Mis Chats</h2>
-    </div>
+    <div id="bienvenida">Mis Chats</div>
 
     <!-- Lista de chats -->
     <div id="listaGrupos">

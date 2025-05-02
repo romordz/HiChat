@@ -7,6 +7,7 @@ include '../backend/process_profile.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../css/perfil.css">
 </head>
 <body>
@@ -64,6 +65,7 @@ include '../backend/process_profile.php';
             <span class="close">&times;</span>
             <h3>Selecciona un Marco</h3>
             <div id="marcosGrid"></div>
+            <p id="noMarcosMensaje" style="display: none; color: #333; font-size: 16px; margin-top: 10px;">No tienes marcos aun.</p>
         </div>
     </div>
 
@@ -85,32 +87,38 @@ include '../backend/process_profile.php';
                     .then(response => response.json())
                     .then(rewards => {
                         const marcosGrid = document.getElementById('marcosGrid');
+                        const noMarcosMensaje = document.getElementById('noMarcosMensaje');
                         marcosGrid.innerHTML = '';
-                        rewards.forEach(reward => {
-                            const marcoElement = document.createElement('div');
-                            marcoElement.classList.add('marco');
-                            marcoElement.style.backgroundImage = `url('../images/${reward.nombre}.png')`;
-                            marcoElement.addEventListener('click', () => {
-                                fetch('../backend/update_profile_frame.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded'
-                                    },
-                                    body: `marco_perfil=${reward.nombre}`
-                                })
-                                .then(response => response.json())
-                                .then(result => {
-                                    if (result.status === 'success') {
-                                        alert('Marco actualizado exitosamente');
-                                        location.reload();
-                                    } else {
-                                        console.error('Error updating frame:', result.message);
-                                    }
-                                })
-                                .catch(error => console.error('Error updating frame:', error));
+                        if (rewards.length === 0) {
+                            noMarcosMensaje.style.display = 'block';
+                        } else {
+                            noMarcosMensaje.style.display = 'none';
+                            rewards.forEach(reward => {
+                                const marcoElement = document.createElement('div');
+                                marcoElement.classList.add('marco');
+                                marcoElement.style.backgroundImage = `url('../images/${reward.nombre}.png')`;
+                                marcoElement.addEventListener('click', () => {
+                                    fetch('../backend/update_profile_frame.php', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        },
+                                        body: `marco_perfil=${reward.nombre}`
+                                    })
+                                    .then(response => response.json())
+                                    .then(result => {
+                                        if (result.status === 'success') {
+                                            alert('Marco actualizado exitosamente');
+                                            location.reload();
+                                        } else {
+                                            console.error('Error updating frame:', result.message);
+                                        }
+                                    })
+                                    .catch(error => console.error('Error updating frame:', error));
+                                });
+                                marcosGrid.appendChild(marcoElement);
                             });
-                            marcosGrid.appendChild(marcoElement);
-                        });
+                        }
                         document.getElementById('popupCambiarMarco').style.display = 'block';
                     })
                     .catch(error => console.error('Error fetching rewards:', error));

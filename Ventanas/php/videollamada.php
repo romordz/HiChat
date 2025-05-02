@@ -9,7 +9,6 @@ if (!$chat_id || !$user_id) {
 
 include '../backend/db_connection.php';
 
-// Obtener el ID del otro usuario en el chat
 $stmt = $conn->prepare("SELECT usuario1_id, usuario2_id FROM Chats WHERE id = ?");
 $stmt->bind_param("i", $chat_id);
 $stmt->execute();
@@ -17,10 +16,8 @@ $stmt->bind_result($usuario1_id, $usuario2_id);
 $stmt->fetch();
 $stmt->close();
 
-// Determinar cuál es el otro usuario
 $other_user_id = ($usuario1_id == $_SESSION['user_id']) ? $usuario2_id : $usuario1_id;
 
-// Obtener los datos del otro usuario
 $stmt = $conn->prepare("SELECT nombre_usuario, foto_perfil, marco_perfil FROM Usuarios WHERE id = ?");
 $stmt->bind_param("i", $other_user_id);
 $stmt->execute();
@@ -35,7 +32,8 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videollamada</title>
-    <link rel="icon" href="images/icon.png">
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../css/videollamada.css">
 </head>
 <body>
@@ -102,7 +100,7 @@ $conn->close();
             // Conectar al servidor de señalización
             function connectToSignalingServer() {
                 connectionStatus.textContent = "Conectando al servidor...";
-                signalingServer = new WebSocket("wss://7827-2806-2f0-42c0-d0ab-55e6-4ff6-557f-7f78.ngrok-free.app"); //aqui
+                signalingServer = new WebSocket("wss://cd5c-2806-2f0-42c0-d0ab-28b1-1aa1-2a2d-9205.ngrok-free.app"); //aqui
                 
                 signalingServer.onopen = () => {
                     console.log("WebSocket connection established.");

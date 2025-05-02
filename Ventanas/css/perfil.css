@@ -1,7 +1,9 @@
 /* ---- ESTILOS GENERALES ---- */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ea66d6, #ff5506);
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(45deg, #ea66d6, #ff5506);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,6 +11,13 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* ---- PERFIL DEL USUARIO ---- */
@@ -49,13 +58,11 @@ body {
 }
 
 /* Nombre y correo */
-#perfil h2 {
+#perfil h2, #perfil p {
     color: white;
-    margin: 5px 0;
 }
 
 #perfil p {
-    color: white;
     font-size: 16px;
     margin: 5px 0;
 }
@@ -222,4 +229,11 @@ body {
 
 .marco:hover {
     transform: scale(1.1);
+}
+
+#noMarcosMensaje {
+    color: #333;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
 }

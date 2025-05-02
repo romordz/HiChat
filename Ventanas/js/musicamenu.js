@@ -14,30 +14,12 @@ btnMusica.addEventListener("click", () => {
     isPlaying = !isPlaying;
 });
 
-audio.play(); // Inicia la música automáticamente
+audio.play();
 
-// Galería de imágenes con enlaces a diferentes páginas
 const imagenes = [
-    { src: "images/banner.jpg", link: "chat.html" },
-    { src: "images/chatibanner.jpg", link: "biografia.html" },
-    { src: "images/run.png", link: "run.html" }
+    { src: "../images/banner.jpg", link: "mis_chats.php", title: "Mis Chats" },
+    { src: "../images/chatibanner.jpg", link: "grupos.php", title: "Mis Grupos" },
+    { src: "../images/fondo.png", link: "Tareas.php", title: "Mis Tareas" },
+    { src: "../images/chati.png", link: "biografia.php", title: "Conoce a Chati" },
+    { src: "../images/Marco Dorado.png", link: "Recompensas.php", title: "Recompensas" }
 ];
-
-let index = 0;
-const imagenActual = document.getElementById("imagenActual");
-const enlaceImagen = document.getElementById("enlaceImagen");
-
-function actualizarImagen() {
-    imagenActual.src = imagenes[index].src;
-    enlaceImagen.href = imagenes[index].link;
-}
-
-document.getElementById("prev").addEventListener("click", () => {
-    index = (index - 1 + imagenes.length) % imagenes.length;
-    actualizarImagen();
-});
-
-document.getElementById("next").addEventListener("click", () => {
-    index = (index + 1) % imagenes.length;
-    actualizarImagen();
-});

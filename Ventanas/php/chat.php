@@ -7,6 +7,7 @@ include '../backend/process_chat.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat con <?php echo htmlspecialchars($nombre_usuario); ?></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../css/chat.css">
 </head>
 <body>
@@ -42,6 +43,8 @@ include '../backend/process_chat.php';
             <button id="btnMusica">🔊 Silenciar</button>
             <button id="btnUbicacion">📌 Enviar ubicación</button>
             <button id="btnVideollamada">📹 Videollamada</button>
+            <button id="btnDocumento">📄 Enviar documento</button>
+            <input type="file" id="documento" style="display: none;">
         </div>
 
         <div id="popupVideollamada" class="popup" style="display: none;">
@@ -73,6 +76,7 @@ include '../backend/process_chat.php';
         document.getElementById("btnVideollamada").addEventListener("click", function () {
             const chatId = <?php echo json_encode($chat_id); ?>;
             const otherUserId = <?php echo json_encode($user_id); ?>;
+            const currentUserId = <?php echo json_encode($_SESSION['user_id']); ?>;
 
             // Enviar mensaje de invitación a videollamada
             fetch('../backend/send_message.php', {
@@ -84,15 +88,14 @@ include '../backend/process_chat.php';
                     chat_id: chatId,
                     contenido: JSON.stringify({ 
                         tipo: 'videollamada', 
-                        mensaje: 'Te están invitando a una videollamada', 
-                        url: `videollamada.php?chat_id=${chatId}&user_id=${otherUserId}` 
+                        nombre_usuario: '<?php echo htmlspecialchars($nombre_usuario); ?>', // Nombre del usuario que RECIBE la llamada
+                        url: `videollamada.php?chat_id=${chatId}&user_id=${currentUserId}&initiator=true` 
                     })
                 })
             }).then(response => {
                 if (response.ok) {
-                    alert("Invitación a videollamada enviada.");
-                    // Redirigir al emisor a la sala de videollamada inmediatamente
-                    window.location.href = `videollamada.php?chat_id=${chatId}&user_id=${otherUserId}`;
+                    // Redirigir al emisor a la página de videollamada inmediatamente
+                    window.location.href = `videollamada.php?chat_id=${chatId}&user_id=${currentUserId}&initiator=true`;
                 } else {
                     alert("Error al enviar la invitación.");
                 }

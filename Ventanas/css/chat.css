@@ -1,7 +1,9 @@
 /* ---- ESTILOS GENERALES ---- */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ea66d6, #ff5506);
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(45deg, #ea66d6, #ff5506);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,10 +12,16 @@ body {
     height: 100vh;
 }
 
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* ---- CONTENEDOR PRINCIPAL DEL CHAT ---- */
 #chatContainer {
-    width: 450px; /* Aumentar el ancho del contenedor */
-    height: 650px; /* Aumentar la altura del contenedor */
+    width: 600px; /* Aumentado de 450px a 600px */
+    height: 650px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -72,6 +80,11 @@ body {
     font-size: 16px;
 }
 
+#cerrarChat:hover {
+    background: rgb(200, 0, 0);
+    transform: scale(1.1);
+}
+
 /* Botón de ver miembros */
 #verMiembros {
     background: rgba(0, 195, 255, 0.8);
@@ -118,12 +131,19 @@ body {
 .mensaje {
     padding: 10px;
     border-radius: 10px;
-    max-width: 70%;
+    max-width: 80%; /* Aumentado de 70% a 80% */
     font-size: 14px;
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; /* Espacio entre mensajes */
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Asegura que las palabras largas se rompan */
+    overflow-wrap: break-word; /* Ayuda con el manejo de contenido largo */
+}
+
+.mensaje:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Mensajes recibidos (izquierda) */
@@ -131,6 +151,8 @@ body {
     background: rgba(255, 255, 255, 0.3); /* Fondo blanco semi-transparente */
     align-self: flex-start; /* Alinear a la izquierda */
     color: white; /* Texto blanco */
+    max-width: 80%; /* Aumentado para dar más espacio */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
 /* Mensajes enviados (derecha) */
@@ -138,6 +160,8 @@ body {
     background: rgba(0, 195, 255, 0.6); /* Fondo azul semi-transparente */
     align-self: flex-end; /* Alinear a la derecha */
     color: white; /* Texto blanco */
+    max-width: 80%; /* Aumentado para dar más espacio */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
 /* Nombre del usuario (solo en mensajes recibidos) */
@@ -150,6 +174,10 @@ body {
 /* Contenido del mensaje */
 .contenido-mensaje {
     font-size: 14px;
+    word-break: break-word; /* Permite romper palabras largas */
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Fecha de envío */
@@ -188,6 +216,7 @@ body {
 
 #enviarMensaje:hover {
     background: rgba(0, 195, 255, 1);
+    transform: scale(1.05);
 }
 
 /* ---- MÚSICA Y BOTÓN DE SILENCIAR ---- */
@@ -212,6 +241,11 @@ body {
 }
 
 #btnMusica:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+#btnUbicacion:hover, #btnVideollamada:hover, #btnDocumento:hover {
     background: rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
 }
@@ -432,10 +466,111 @@ body {
     transform: scale(1.1);
 }
 
+/* Estilos para el botón de enviar documento */
+#btnDocumento {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+#btnDocumento:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Estilos para enlaces de documentos */
+.contenido-mensaje a.documento-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block; /* Cambiado de block a inline-block */
+    padding: 5px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all; /* Asegura que los nombres largos se rompan */
+    white-space: pre-wrap; /* Preserva espacios y saltos de línea */
+}
+
 .mensaje iframe {
     width: 100%;
     height: 200px;
     border: none;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+/* Estilos para invitación de videollamada */
+.videollamada-invitacion {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.videollamada-mensaje {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.videollamada-icon {
+    font-size: 24px;
+}
+
+.videollamada-status {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.videollamada-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-aceptar, .btn-rechazar {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-aceptar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-rechazar {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-aceptar:hover, .btn-rechazar:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.videollamada-mensaje.rechazada {
+    color: #f44336;
+}
+
+.videollamada-mensaje.aceptada {
+    color: #4CAF50;
+}
+
+.videollamada-respuesta {
+    font-style: italic;
+    opacity: 0.9;
+    margin: 5px 0;
 }

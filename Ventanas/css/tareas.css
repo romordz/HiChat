@@ -1,7 +1,8 @@
-/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ea66d6, #ff5506);
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(45deg, #ea66d6, #ff5506);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,36 +12,20 @@ body {
     color: white;
 }
 
-/* Contenedor del logo y la imagen "chati.png" */
-#logo {
-    display: flex;
-    align-items: center;  /* Alinear imágenes verticalmente */
-    gap: 10px;            /* Espacio entre las imágenes */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Estilos para ambas imágenes */
-#logo img {
-    width: 80px;  
-    height: auto;
-    border-radius: 50%;
-}
-
-/* Ajustes específicos para la imagen "chati.png" */
-#chati {
-    width: 80px;  
-    border-radius: 10px; 
-}
-
-/* Mensaje de bienvenida */
 #bienvenida {
     text-align: center;
-    margin-top: 110px; /* Add margin to prevent header from overshadowing content */
+    margin-top: 110px;
     color: white;
-    font-size: 20px;
+    font-size: 2em; /* Updated font size */
     font-weight: bold;
 }
 
-/* Contenedor de tareas */
 .tareas-container {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -58,14 +43,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* Cuadrícula de tareas */
 .tareas-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    gap: 20px; /* Espacio entre tareas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-/* Estilos para cada tarea */
 .tarea {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 15px;
@@ -77,7 +60,8 @@ body {
 
 .tarea:hover {
     background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.02);
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .tarea-titulo {

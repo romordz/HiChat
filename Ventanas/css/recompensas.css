@@ -2,8 +2,10 @@
 
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ea66d6, #ff5506);
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(45deg, #ea66d6, #ff5506);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,12 +15,18 @@ body {
     color: white;
 }
 
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* Mensaje de bienvenida */
 #bienvenida {
     text-align: center;
     margin-top: 110px; /* Add margin to prevent header from overshadowing content */
     color: white;
-    font-size: 20px;
+    font-size: 2em; /* Updated font size */
     font-weight: bold;
 }
 
@@ -62,7 +70,8 @@ body {
 
 .recompensa:hover {
     background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.02);
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .recompensa-img {
